@@ -2,10 +2,19 @@ from django.db import models
 from django.shortcuts import resolve_url as r
 
 
+class Grupo(models.Model):
+    nome_grupo = models.CharField(max_length=1)
+
+    def __str__(self):
+        return self.nome_grupo
+
+
 class Selecao(models.Model):
     nome = models.CharField(max_length=255, null=True)
     sigla = models.CharField(max_length=4, null=True)
     slug = models.SlugField()
+    grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
+
 
     class Meta:
         verbose_name = 'Seleção'
@@ -47,4 +56,7 @@ class Aposta(models.Model):
 
     def __str__(self):
         return str(self.jogo)
+
+
+
 
