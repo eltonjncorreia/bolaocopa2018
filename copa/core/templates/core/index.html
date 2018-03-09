@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+
+{% for jogo in jogos %}
+
+    <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+      <div class="card h-100">
+        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+        <div class="card-body">
+          <h5 class="card-title">
+            <div class="row form-group">
+                <a href="#">{{ jogo.selecao_1 }}</a>
+            <input type="number" class="form-control"  name="" maxlength="2">
+             x
+            <input class="form-control"  name="" type="number" maxlength="2">
+            <a href="#">{{ jogo.selecao_2 }}</a>
+        </div>
+        </h5>
+
+      </div>
+    </div>
+    </div>
+
+{% endfor %}
+
+{% endblock content %}
+

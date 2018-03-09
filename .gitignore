@@ -99,3 +99,14 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+.idea
+.env
+.idea
+.venv
+*pyc
+*.sqlite3
+__pycache__
+.ipynb_checkpoints
+staticfiles
