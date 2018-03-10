@@ -2,47 +2,51 @@
 
 
 {% block content %}
+    {% for g in grupo_a %}
+        {{ g }}
+    {% endfor %}
 
-<!-- /.row -->
-            <div class="row">
+    <div class="row">
+        {% for grupo in grupo_a %}
 
-                <div class="col-lg">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Grupo A
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Seleção</th>
-                                            <th>Sigla</th>
-                                            <th>Dados</th>
-                                        </tr>
-                                    </thead>
-                                   {% for grupo in grupo_a %}
-                                        <tbody>
-
-                                            <tr>
-                                                <td>{{ grupo.nome }}</td>
-                                                <td>{{ grupo.sigla }}</td>
-                                                <td>{{ grupo.slug }}</td>
-                                            </tr>
-
-                                        </tbody>
-                                    {% endfor %}
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
+        <div class="col-lg">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Grupo {{ grupo }}
                 </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Seleção</th>
+                                <th>Sigla</th>
+                                <th>Dados</th>
+                            </tr>
+                            </thead>
 
+                                <tbody>
+
+                                <tr>
+                                    <td>#</td>
+                                    <td>{{ grupo.nome }}</td>
+                                    <td>{{ grupo.sigla }}</td>
+                                    <td>{{ grupo.slug }}</td>
+                                </tr>
+
+                                </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
             </div>
+            <!-- /.panel -->
+        </div>
+
+    </div>
 
 {% endblock content %}

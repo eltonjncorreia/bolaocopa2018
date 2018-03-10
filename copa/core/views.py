@@ -10,10 +10,14 @@ def home(request):
 
 
 def grupo(request):
-    grupo_a = Selecao.objects.filter(grupo__nome_grupo='A').order_by('nome')
+    lista = []
+    grupo = Grupo.objects.all()
+    for g in grupo:
+        selecao = Selecao.objects.all().filter(grupo__nome_grupo=g)
+        lista.append(selecao)
 
     context = {
-        'grupo_a': grupo_a,
+        'grupo_a': lista,
 
     }
 
