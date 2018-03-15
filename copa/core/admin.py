@@ -18,7 +18,7 @@ class ApostaAdmin(admin.ModelAdmin):
 
 
 class SelecaoAdmin(admin.ModelAdmin):
-    list_display = ['nome', 'sigla', 'grupo']
+    list_display = ['nome', 'sigla', 'grupo', 'bandeira']
 
 
 admin.site.register(Selecao, SelecaoAdmin)
