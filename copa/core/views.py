@@ -6,7 +6,7 @@ from copa.usuario.views import create_users, empty_form
 
 def home(request):
     jogo = Jogo.objects.all()
-    return render(request, 'core/index.html', {'jogos': jogo, 'grupo': grupo})
+    return render(request, 'core/index.html', {'jogos': jogo})
 
 
 def grupo(request):
