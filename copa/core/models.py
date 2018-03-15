@@ -10,11 +10,15 @@ class Grupo(models.Model):
 
 
 class Selecao(models.Model):
+
     nome = models.CharField(max_length=255, null=True)
     sigla = models.CharField(max_length=4, null=True)
     slug = models.SlugField()
+    gol_marc = models.IntegerField()
+    gol_sofr = models.IntegerField()
+    pontos = models.IntegerField()
+    bandeira = models.ImageField(upload_to='galeria/original')
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
-
 
     class Meta:
         verbose_name = 'Seleção'
@@ -24,7 +28,7 @@ class Selecao(models.Model):
         return self.nome
 
     def get_absolute_url(self):
-        return r('speaker-detail', slug=self.slug)
+        return r('detail', slug=self.slug)
 
 
 class Jogo(models.Model):
