@@ -17,7 +17,7 @@ class Selecao(models.Model):
     gol_marc = models.IntegerField()
     gol_sofr = models.IntegerField()
     pontos = models.IntegerField()
-    bandeira = models.ImageField(upload_to='galeria/original')
+    bandeira = models.ImageField(upload_to='media')
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
 
     class Meta:
@@ -28,7 +28,7 @@ class Selecao(models.Model):
         return self.nome
 
     def get_absolute_url(self):
-        return r('detail', slug=self.slug)
+        return self.bandeira
 
 
 class Jogo(models.Model):

@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
-from copa.core.models import Jogo, Aposta, Grupo, Selecao
-from copa.usuario.views import create_users, empty_form
+from copa.core.models import Jogo, Grupo, Selecao
 
 
 def home(request):
