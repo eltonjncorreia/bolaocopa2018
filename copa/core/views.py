@@ -14,6 +14,7 @@ def grupo(request):
     for g in grupo:
         selecao = Selecao.objects.all().filter(grupo__nome_grupo=g)
         lista.append(selecao)
+
     context = {
         'grupo_a': lista,
 
