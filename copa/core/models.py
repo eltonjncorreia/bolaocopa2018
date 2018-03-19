@@ -21,6 +21,7 @@ class Selecao(models.Model):
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
 
     class Meta:
+        ordering = ('nome',)
         verbose_name = 'Seleção'
         verbose_name_plural = 'Seleções'
 
@@ -37,6 +38,9 @@ class Jogo(models.Model):
     selecao_2 = models.ForeignKey('Selecao',on_delete=models.CASCADE, related_name='selecoes_2')
     placar_1 = models.CharField(max_length=2, blank=True)
     placar_2 = models.CharField(max_length=2, blank=True)
+
+    class Meta:
+        ordering = ('horario',)
 
     def __str__(self):
         return str(self.selecao_1) + " x " + str(self.selecao_2)
