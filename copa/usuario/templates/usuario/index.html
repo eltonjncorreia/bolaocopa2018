@@ -7,34 +7,109 @@
 <head>
     <meta charset="UTF-8">
     <title>Bolão Copa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
+
+    <link href="{% static 'css/pagina-inicio.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
 </head>
 
 <body>
 
-    <div class="row">
+<div class="row">
 
-        <div class="col-lg-8">
-            <img class="img-fluid" src="{% static "img/russia_2018_interim_mark.png" %}">
+
+    <div class="col-lg-3">
+        <div class="row">
+            <div class="col-12 bg-info espacamento" >
+
+                <a class="text-white" href="{% url 'usuario:login' %}">Login</a>
+                <a class="text-white" href="{% url 'usuario:landingpage' %}">Cadastro</a>
+
+            </div>
+
         </div>
 
-        <div class="col-lg-4">
-            <br><br><br>
-            <a href="{% url 'usuario:login' %}">Login</a>
-            <a href="{% url 'usuario:landingpage' %}">Cadastro</a>
+
+        <br>
+        <br>
+
+        {% if not user.is_authenticated %}
 
             {% block content %}
             {% endblock content %}
+
+        {% else %}
+            <div class="container">
+                <div class="row text-center">
+
+                    <div class="col" >
+
+                        <p> Você já esta logado clique em entrar para acessar a pagina </p>
+                        <p> Regras </p>
+                        <br>
+                        <a href="{% url 'core:home' %}" class="btn btn-info">Entrar</a>
+
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        <br>
+        <div class="container text-center">
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">
+                        <a href="#">
+                            Start Bootstrap
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#">Shortcuts</a>
+                    </li>
+                    <li>
+                        <a href="#">Overview</a>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                    </li>
+                    <li>
+                        <a href="#">About</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
-        <div class="col-lg">
-            <br>
-            <h1>Regras do Jogo</h1>
-        </div>
+            <!-- /#sidebar-wrapper -->
     </div>
+
+    <div class="col-lg-9" style="background-image: url('{% static "img/copa.jpg" %}');
+            height: 800px">
+
+    </div>
+</div>
+
+{#<div class="col-lg">#}
+{##}
+{#    <br>#}
+{#    <h1>Regras do Jogo</h1>#}
+{#</div>#}
 
 
 </body>
