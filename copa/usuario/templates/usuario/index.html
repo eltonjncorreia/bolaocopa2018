@@ -1,15 +1,40 @@
 <!DOCTYPE html>
+
+{% load static %}
+
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Bolão Copa</title>
-</head>
-<body>
-<a href="{% url 'usuario:login' %}">Login</a>
-<a href="{% url 'usuario:landingpage' %}">Cadastro</a>
 
-{% block content %}
-{% endblock content %}
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+</head>
+
+<body>
+
+    <div class="row">
+
+        <div class="col-lg-8">
+            <img class="img-fluid" src="{% static "img/russia_2018_interim_mark.png" %}">
+        </div>
+
+        <div class="col-lg-4">
+            <br><br><br>
+            <a href="{% url 'usuario:login' %}">Login</a>
+            <a href="{% url 'usuario:landingpage' %}">Cadastro</a>
+
+            {% block content %}
+            {% endblock content %}
+        </div>
+        <div class="col-lg">
+            <br>
+            <h1>Regras do Jogo</h1>
+        </div>
+    </div>
 
 
 </body>
