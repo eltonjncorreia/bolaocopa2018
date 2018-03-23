@@ -9,7 +9,7 @@
         {% for grupo in grupo_a %}
 
 
-            <div class="col-lg">
+            <div class="col-lg-6">
                 <div class="panel panel-default">
                     {% for gr in grupo|slice:":1" %}
                         <div class="panel-heading">
@@ -26,7 +26,9 @@
                                 <tr>
                                     <th>Seleção</th>
                                     <th>Sigla</th>
-                                    <th>Dados</th>
+                                    <th>Gols Marcado</th>
+                                    <th>Gols Sofrido</th>
+                                    <th>Gols Pontos</th>
                                 </tr>
                                 </thead>
                                 {% for gr in grupo %}
@@ -35,7 +37,9 @@
                                     <tr>
                                         <td>{{ gr.nome }}</td>
                                         <td>{{ gr.sigla }}</td>
-                                        <td>{{ gr.slug }}</td>
+                                        <td>{{ gr.gol_marc }}</td>
+                                        <td>{{ gr.gol_sofr }}</td>
+                                        <td>{{ gr.pontos }}</td>
                                     </tr>
 
                                     </tbody>
