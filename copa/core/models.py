@@ -13,11 +13,11 @@ class Selecao(models.Model):
 
     nome = models.CharField(max_length=255, null=True)
     sigla = models.CharField(max_length=4, null=True)
-    slug = models.SlugField()
-    gol_marc = models.IntegerField()
-    gol_sofr = models.IntegerField()
-    pontos = models.IntegerField()
-    bandeira = models.ImageField(upload_to='media')
+    slug = models.SlugField(null=True)
+    gol_marc = models.IntegerField(null=True)
+    gol_sofr = models.IntegerField(null=True)
+    pontos = models.IntegerField(null=True)
+    bandeira = models.ImageField(upload_to='media', null=True)
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
 
     class Meta:
@@ -33,11 +33,11 @@ class Selecao(models.Model):
 
 
 class Jogo(models.Model):
-    horario = models.DateField(auto_now=True)
+    horario = models.DateField(auto_now_add=False)
     selecao_1 = models.ForeignKey('Selecao', on_delete=models.CASCADE, related_name='selecoes_1')
     selecao_2 = models.ForeignKey('Selecao',on_delete=models.CASCADE, related_name='selecoes_2')
-    placar_1 = models.CharField(max_length=2, blank=True)
-    placar_2 = models.CharField(max_length=2, blank=True)
+    placar_1 = models.CharField(max_length=2, blank=True, null=True)
+    placar_2 = models.CharField(max_length=2, blank=True, null=True)
 
     class Meta:
         ordering = ('horario',)
