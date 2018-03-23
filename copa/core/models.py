@@ -1,5 +1,4 @@
 from django.db import models
-from django.shortcuts import resolve_url as r
 
 
 class Grupo(models.Model):
