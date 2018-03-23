@@ -11,7 +11,7 @@ def home(request):
 
 def grupo(request):
     lista = []
-    grupo = Grupo.objects.all()
+    grupo = Grupo.objects.all().order_by('nome_grupo')
     for g in grupo:
         selecao = Selecao.objects.all().filter(grupo__nome_grupo=g)
         lista.append(selecao)
