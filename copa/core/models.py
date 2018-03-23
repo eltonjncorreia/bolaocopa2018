@@ -11,13 +11,13 @@ class Grupo(models.Model):
 
 class Selecao(models.Model):
 
-    nome = models.CharField(max_length=255, null=True)
-    sigla = models.CharField(max_length=4, null=True)
+    nome = models.CharField(max_length=255,  null=True)
+    sigla = models.CharField(max_length=4, blank=True, null=True)
     slug = models.SlugField(null=True)
-    gol_marc = models.IntegerField(null=True)
-    gol_sofr = models.IntegerField(null=True)
-    pontos = models.IntegerField(null=True)
-    bandeira = models.ImageField(upload_to='media', null=True)
+    gol_marc = models.IntegerField(null=True, blank=True,)
+    gol_sofr = models.IntegerField(null=True, blank=True,)
+    pontos = models.IntegerField(null=True, blank=True,)
+    bandeira = models.ImageField(upload_to='media', null=True, blank=True,)
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
 
     class Meta:
@@ -33,7 +33,7 @@ class Selecao(models.Model):
 
 
 class Jogo(models.Model):
-    horario = models.DateField(auto_now_add=False)
+    horario = models.DateTimeField(auto_now_add=False)
     selecao_1 = models.ForeignKey('Selecao', on_delete=models.CASCADE, related_name='selecoes_1')
     selecao_2 = models.ForeignKey('Selecao',on_delete=models.CASCADE, related_name='selecoes_2')
     placar_1 = models.CharField(max_length=2, blank=True, null=True)
