@@ -29,15 +29,19 @@
                                 <th>Placar</th>
                                 <th>Visitante</th>
                                 <th>Valor</th>
-                                <th>Apostar</th>
                             </tr>
                             </thead>
 
                             {% for jogo in jogos %}
 
                                 <tbody>
+                                <form action="{% url 'core:aposta' jogo.id %}" method="post">
+                                {% csrf_token %}
                                 <tr class="odd gradeX text-center" >
+
+
                                     <td >{{ jogo.horario }}</td>
+
                                     <td>{{ jogo.selecao_1 }}</td>
                                     <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar_1" class="form-control" required></td>
                                     <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar_2" class="form-control" required></td>
@@ -46,17 +50,19 @@
                                     <td>
                                         <select class="custom-select">
                                             <option selected>Escolha um valor</option>
-                                            <option value="5">5</option>
+                                            <option name="cinco" value="5">5</option>
                                             <option value="10">10</option>
                                             <option value="20">20</option>
                                             <option value="50">50</option>
                                             <option value="100">100</option>
                                         </select>
                                     </td>
-                                    <td><a class="btn btn-outline-danger" href="">Apostar</a></td>
+
                                 </tr>
-                                </tbody>
                             {% endfor %}
+
+                            </tbody>
+
 
                         </table>
 
@@ -66,6 +72,15 @@
                 <!-- /.panel -->
             </div>
             <!-- /.col-lg-12 -->
+
+            <div class="col-lg">
+
+                <button class="btn btn-outline-danger"  type="submit">Apostar</button>
+
+            </div>
+
+            </form>
+
         </div>
     </div>
     <!-- /.row -->
