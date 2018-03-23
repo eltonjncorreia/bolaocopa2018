@@ -5,7 +5,7 @@ from copa.core.models import Jogo, Grupo, Selecao
 
 
 def home(request):
-    jogo = Jogo.objects.all().order_by('-horario')
+    jogo = Jogo.objects.all().order_by('horario')
     return render(request, 'core/index.html', {'jogos': jogo})
 
 
