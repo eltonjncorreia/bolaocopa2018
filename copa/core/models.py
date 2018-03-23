@@ -13,7 +13,7 @@ class Selecao(models.Model):
     nome = models.CharField(max_length=255,  null=True)
     sigla = models.CharField(max_length=4, blank=True, null=True)
     slug = models.SlugField(null=True)
-    gol_marc = models.IntegerField(null=True, blank=True,)
+    gol_marc = models.IntegerField(default=0, null=True, blank=True,)
     gol_sofr = models.IntegerField(null=True, blank=True,)
     pontos = models.IntegerField(null=True, blank=True,)
     bandeira = models.ImageField(upload_to='media', null=True, blank=True,)

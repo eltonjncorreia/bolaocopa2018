@@ -6,7 +6,7 @@ from copa.core.models import Jogo, Grupo, Selecao
 
 def home(request):
     jogo = Jogo.objects.all().order_by('horario')
-    return render(request, 'core/index.html', {'jogos': jogo})
+    return render(request, 'core/index.html', {'jogos': jogo })
 
 
 def grupo(request):
@@ -40,8 +40,8 @@ def aposta(request, jogo_id):
         # Always return an HttpResponseRedirect after successfully dealing
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
-    # return HttpResponseRedirect(r('core:home'))
-    return render(request, 'core/apostas.html', {'id': jogo_id})
+    return HttpResponseRedirect(r('core:home'))
+    # return render(request, 'core/apostas.html', {'id': jogo_id})
 
 
 

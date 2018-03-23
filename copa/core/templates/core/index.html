@@ -3,8 +3,8 @@
 {% load static %}
 
 {% block content %}
-
-    <div id="page-wrapper col-lg-12 col-md-6 col-sm-12" >
+    <br xmlns="http://www.w3.org/1999/html">
+    <div id="page-wrapper col-lg-6 col-md-12 col-sm-12" >
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">Copa do Mundo 2018</h1>
@@ -12,77 +12,60 @@
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
+        <br>
+
         <div class="row">
-            <div class="col-lg-12" >
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Jogos da Copa
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body text-center  ">
-                        <table width="100%" class="table table-striped table-bordered table-hover col-md-12 col-sm-6 display-8" id="dataTables-example">
-                            <thead class="bg-info text-white">
+
+            <div class="col-lg-8" >
+
+                {% for jogo in jogos %}
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Mandante</th>
+                            <th scope="col">Placar</th>
+                            <th scope="col">Placar</th>
+                            <th scope="col">Visitante</th>
+                            <th scope="col">Preço</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <form action="" method="post">
                             <tr>
-                                <th>Horário</th>
-                                <th>Mandante</th>
-                                <th>Placar</th>
-                                <th>Placar</th>
-                                <th>Visitante</th>
-                                <th>Valor</th>
+                                <td>{{ jogo.selecao_1 }}</td>
+                                <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar_1" class="form-control" required></td>
+                                <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar_2" class="form-control" required></td>
+                                <td>{{ jogo.selecao_2 }}</td>
+                                <td>
+                                    <select class="custom-select">
+                                        <option selected>Escolha um valor</option>
+                                        <option name="cinco" value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select>
+                                </td>
+                                <small>{{ jogo.horario }}</small>
+
                             </tr>
-                            </thead>
+                        </form>
 
-                            {% for jogo in jogos %}
+                        </tbody>
 
-                                <tbody>
-                                <form action="{% url 'core:aposta' jogo.id %}" method="post">
-                                {% csrf_token %}
-                                <tr class="odd gradeX text-center" >
+                    </table>
+                    <a class="btn btn-danger" href="{% url 'core:aposta' jogo.id %}" type="submit">Apostar</a>
 
+                    </form>
+                    <br>
+                    <br>
 
-                                    <td >{{ jogo.horario }}</td>
-
-                                    <td>{{ jogo.selecao_1 }}</td>
-                                    <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar_1" class="form-control" required></td>
-                                    <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar_2" class="form-control" required></td>
-                                    <td>{{ jogo.selecao_2 }}</td>
-
-                                    <td>
-                                        <select class="custom-select">
-                                            <option selected>Escolha um valor</option>
-                                            <option name="cinco" value="5">5</option>
-                                            <option value="10">10</option>
-                                            <option value="20">20</option>
-                                            <option value="50">50</option>
-                                            <option value="100">100</option>
-                                        </select>
-                                    </td>
-
-                                </tr>
-                            {% endfor %}
-
-                            </tbody>
-
-
-                        </table>
-
-                    </div>
-                    <!-- /.panel-body -->
-                </div>
-                <!-- /.panel -->
-            </div>
-            <!-- /.col-lg-12 -->
-
-            <div class="col-lg">
-
-                <button class="btn btn-outline-danger"  type="submit">Apostar</button>
+                {% endfor %}
 
             </div>
-
-            </form>
-
         </div>
     </div>
-    <!-- /.row -->
-
+    </div>
 {% endblock content %}
