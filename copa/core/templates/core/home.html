@@ -1,0 +1,80 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+
+    <h1 class="my-4">Copa do Mundo </h1>
+    <small><h4 class="my-4">1ª Rodada </h4></small>
+
+    <div class="row">
+        {% for jogo in jogos %}
+
+
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+
+                        <small>{{ jogo.horario }}</small>
+
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="table table-info">
+                                <tr>
+                                    <th scope="col">Mandante</th>
+                                    <th scope="col">Placar</th>
+                                    <th scope="col">Placar</th>
+                                    <th scope="col">Visitante</th>
+                                    <th scope="col">Preço</th>
+                                    <th scope="col">Aposta</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <form action="{% url 'core:aposta' jogo.id %}" method="post">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <td>{{ jogo.selecao_1 }}</td>
+                                        <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
+                                        <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar2" class="form-control" required></td>
+                                        <td>{{ jogo.selecao_2 }}</td>
+                                        <td>
+                                            <select name="preco" class="custom-select" style="width: 60px" required>
+                                                <option value="5">5</option>
+                                                <option value="10">10</option>
+                                                <option value="20">20</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>
+                                        </td>
+                                        {% if mensagem %}
+                                            Deu
+                                        {% else %}
+                                            <td><button class="btn btn-danger" type="submit">Apostar</button>
+                                        {% endif %}
+                                        </td>
+
+                                    </tr>
+
+                                </form>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                    </div>
+
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock content %}
