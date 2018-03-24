@@ -49,17 +49,7 @@ class Aposta(models.Model):
     jogo = models.ForeignKey('Jogo', related_name='jogos', on_delete=models.CASCADE)
     placar_1 = models.CharField(max_length=2)
     placar_2 = models.CharField(max_length=2)
-    DOIS = '2'
-    CINCO = '5'
-    DEZ = '10'
-    VINTE = '20'
-
-    PRECO = ((DOIS, '2'),
-             (CINCO, '5'),
-             (DEZ, '10'),
-             (VINTE, '20'))
-
-    preco = models.CharField(max_length=1, choices=PRECO)
+    preco = models.IntegerField(blank=True, null=True)
 
     def __str__(self):
         return str(self.jogo)

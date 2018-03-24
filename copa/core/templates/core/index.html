@@ -16,7 +16,7 @@
 
         <div class="row">
 
-            <div class="col-lg-8" >
+            <div class="col-lg-7" >
 
                 {% for jogo in jogos %}
 
@@ -28,42 +28,52 @@
                             <th scope="col">Placar</th>
                             <th scope="col">Visitante</th>
                             <th scope="col">Preço</th>
+                            <th scope="col">Aposta</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <form action="" method="post">
+                        <form action="{% url 'core:aposta' jogo.id %}" method="post">
+                            {% csrf_token %}
                             <tr>
                                 <td>{{ jogo.selecao_1 }}</td>
-                                <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar_1" class="form-control" required></td>
-                                <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar_2" class="form-control" required></td>
+                                <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
+                                <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar2" class="form-control" required></td>
                                 <td>{{ jogo.selecao_2 }}</td>
                                 <td>
-                                    <select class="custom-select">
-                                        <option selected>Escolha um valor</option>
-                                        <option name="cinco" value="5">5</option>
+                                    <select name="preco" class="custom-select">
+                                        <option selected>Valor</option>
+                                        <option value="5">5</option>
                                         <option value="10">10</option>
                                         <option value="20">20</option>
                                         <option value="50">50</option>
                                         <option value="100">100</option>
                                     </select>
                                 </td>
+                                <td><button class="btn btn-danger" type="submit">Apostar</button>
+                                </td>
                                 <small>{{ jogo.horario }}</small>
 
                             </tr>
-                        </form>
 
+                        </form>
                         </tbody>
 
                     </table>
-                    <a class="btn btn-danger" href="{% url 'core:aposta' jogo.id %}" type="submit">Apostar</a>
 
-                    </form>
-                    <br>
-                    <br>
 
+                    <hr>
                 {% endfor %}
+                <hr>
 
+
+
+            </div>
+            <div class="col">
+
+
+                Confirmar Jogos
+                <a href="{% url 'core:minha_aposta' %}">Minhas Apostas</a>
             </div>
         </div>
     </div>

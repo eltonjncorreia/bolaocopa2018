@@ -1,12 +1,14 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, resolve_url as r
 
-from copa.core.models import Jogo, Grupo, Selecao
-
+from copa.core.models import Jogo, Grupo, Selecao, Aposta
+# from datetime import date
 
 def home(request):
+    # hoje = date.today().day
+    # jogo = Jogo.objects.filter(horario__day=hoje).order_by('horario')
     jogo = Jogo.objects.all().order_by('horario')
-    return render(request, 'core/index.html', {'jogos': jogo })
+    return render(request, 'core/index.html', {'jogos': jogo})
 
 
 def grupo(request):
@@ -25,28 +27,24 @@ def grupo(request):
 
 
 def aposta(request, jogo_id):
+    if request.method == 'POST':
+        jogo = Jogo.objects.get(pk=jogo_id)
+        placa1 = request.POST.get('placar1')
+        placa2 = request.POST.get('placar2')
+        preco = request.POST.get('preco')
 
-    try:
-        jogo_id = get_object_or_404(Jogo, pk=jogo_id)
-    except Jogo.DoesNotExist:
-        # Redisplay the question voting form.
-        return render(request, 'polls/detail.html', {
-            'question': jogo_id,
-            'error_message': "You didn't select a choice.",
-        })
-    # else:
-        # selected_choice.votes += 1
-        # selected_choice.save()
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-    return HttpResponseRedirect(r('core:home'))
-    # return render(request, 'core/apostas.html', {'id': jogo_id})
+        Aposta.objects.create(jogo=jogo,
+                              placar_1=placa1,
+                              placar_2=placa2,
+                              preco=preco)
+
+        return HttpResponseRedirect(r('core:home'))
+    else:
+        return HttpResponseRedirect(r('core:minha_aposta'))
 
 
-
-
-
+def minha_aposta(request):
+    return render(request, 'core/minhas_apostas.html')
 
 
 
