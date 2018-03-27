@@ -1,6 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
 from copa.core.models import Selecao, Jogo, Aposta, Grupo
 
 
@@ -14,7 +13,7 @@ class JogoAdmin(admin.ModelAdmin):
 
 
 class ApostaAdmin(admin.ModelAdmin):
-    list_display = ['jogo', 'placar_1', 'placar_2', 'preco']
+    list_display = ['user_aposta', 'jogo', 'placar_1', 'placar_2', 'preco']
 
 
 class SelecaoAdmin(admin.ModelAdmin):

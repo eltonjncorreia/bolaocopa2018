@@ -3,7 +3,12 @@
 
 {% block content %}
 
-{{ id }}
+    {% for selecoes in apostas %}
+        <p>{{ selecoes }}<br>
+        <small>{{ selecoes.placar_2 }}x{{ selecoes.placar_2 }}</small>
+        </p><br>
+        <p></p><br>
+    {% endfor %}
 
 
 {% endblock content %}

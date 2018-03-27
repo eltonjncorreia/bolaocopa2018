@@ -3,6 +3,7 @@
 
 {% block content %}
 
+
     <h1 class="my-4">Copa do Mundo </h1>
     <small><h4 class="my-4">1ª Rodada </h4></small>
 
@@ -50,11 +51,20 @@
                                                 <option value="100">100</option>
                                             </select>
                                         </td>
-                                        {% if mensagem %}
-                                            Deu
-                                        {% else %}
-                                            <td><button class="btn btn-danger" type="submit">Apostar</button>
-                                        {% endif %}
+                                        <td>
+                                            {% if messages %}
+                                                {% for message in messages %}
+
+                                                    {{ message }}
+
+                                                {% endfor %}
+
+                                            {% else %}
+
+                                                <button class="btn btn-danger" type="submit">Apostar</button>
+
+                                            {% endif %}
+
                                         </td>
 
                                     </tr>

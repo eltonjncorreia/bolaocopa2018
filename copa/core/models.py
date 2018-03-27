@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -46,6 +47,7 @@ class Jogo(models.Model):
 
 
 class Aposta(models.Model):
+    user_aposta = models.ForeignKey(User,on_delete=models.CASCADE)
     jogo = models.ForeignKey('Jogo', related_name='jogos', on_delete=models.CASCADE)
     placar_1 = models.CharField(max_length=2)
     placar_2 = models.CharField(max_length=2)

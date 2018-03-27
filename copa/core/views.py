@@ -1,14 +1,13 @@
+from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, resolve_url as r
-
 from copa.core.models import Jogo, Grupo, Selecao, Aposta
 # from datetime import date
 
 
 def home(request):
-
     # hoje = date.today().day
-    # jogo = Jogo.objects.filter(horario__day=hoje).order_by('horario')
+    # jogo = Jogo.objects.filter(horario__day=15).order_by('horario')
     jogo = Jogo.objects.all().order_by('horario')
     return render(request, 'core/home.html', {'jogos': jogo})
 
@@ -39,14 +38,19 @@ def aposta(request, jogo_id):
                               placar_1=placa1,
                               placar_2=placa2,
                               preco=preco)
-        mensagem = 'Deu'
-        return HttpResponseRedirect(r('core:home', mensagem))
+
+        messages.success(request, 'Aposta realizada')
+        return HttpResponseRedirect(r('core:home'))
     else:
-        return HttpResponseRedirect(r('core:minha_aposta'))
+        return HttpResponseRedirect(r('core:erro_aposta'))
+
+
 
 
 def minha_aposta(request):
-    return render(request, 'core/minhas_apostas.html')
+
+    aposta = Aposta.objects.all().filter()
+    return render(request, 'core/minhas_apostas.html', {'apostas': aposta})
 
 
 
