@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, resolve_url as r
 from copa.core.models import Jogo, Grupo, Selecao, Aposta
@@ -28,13 +29,16 @@ def grupo(request):
 
 
 def aposta(request, jogo_id):
+    user = User.objects.get(pk=request.user.id)
     if request.method == 'POST':
+
         jogo = Jogo.objects.get(pk=jogo_id)
         placa1 = request.POST.get('placar1')
         placa2 = request.POST.get('placar2')
         preco = request.POST.get('preco')
 
-        Aposta.objects.create(jogo=jogo,
+        Aposta.objects.create(user_aposta=user,
+                              jogo=jogo,
                               placar_1=placa1,
                               placar_2=placa2,
                               preco=preco)

@@ -13,7 +13,7 @@ class JogoAdmin(admin.ModelAdmin):
 
 
 class ApostaAdmin(admin.ModelAdmin):
-    list_display = ['user_aposta', 'jogo', 'placar_1', 'placar_2', 'preco']
+    list_display = ['user_da_aposta', 'jogo', 'placar_1', 'placar_2', 'preco']
 
 
 class SelecaoAdmin(admin.ModelAdmin):
