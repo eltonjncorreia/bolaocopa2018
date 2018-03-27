@@ -37,7 +37,7 @@ def aposta(request, jogo_id):
         placa2 = request.POST.get('placar2')
         preco = request.POST.get('preco')
 
-        Aposta.objects.create(user_aposta=user,
+        Aposta.objects.create(user_da_aposta=user,
                               jogo=jogo,
                               placar_1=placa1,
                               placar_2=placa2,
