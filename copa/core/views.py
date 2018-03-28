@@ -10,10 +10,7 @@ def home(request):
     # hoje = date.today().day
     # jogo = Jogo.objects.filter(horario__day=15).order_by('horario')
     jogo = Jogo.objects.all().order_by('horario')
-    bandeira = Selecao.objects.all()
-
     contexto = {
-        'bandeiras': bandeira,
         'jogos': jogo
     }
     return render(request, 'core/home.html', contexto)
@@ -24,12 +21,10 @@ def grupo(request):
     grupo = Grupo.objects.all().order_by('nome_grupo')
     for g in grupo:
         selecao = Selecao.objects.all().filter(grupo__nome_grupo=g)
-        bandeira = Selecao.objects.all().filter(bandeira=g)
-        lista.append(selecao, bandeira)
+        lista.append(selecao)
 
     context = {
         'grupo_a': lista,
-        'bandeira': bandeira
 
     }
 
