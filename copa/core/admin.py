@@ -9,7 +9,7 @@ class ApostaInlines(admin.StackedInline):
 
 
 class JogoAdmin(admin.ModelAdmin):
-    list_display = ['horario', 'selecao_1', 'placar_1', 'placar_2', 'selecao_2', ]
+    list_display = ['horario', 'selecao_1', 'placar_1', 'placar_2', 'selecao_2']
 
 
 class ApostaAdmin(admin.ModelAdmin):

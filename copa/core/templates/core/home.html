@@ -4,6 +4,7 @@
 {% block content %}
 
 
+
     <h1 class="my-4">Copa do Mundo </h1>
     <small><h4 class="my-4">1ª Rodada </h4></small>
 
@@ -38,7 +39,16 @@
                                 <form action="{% url 'core:aposta' jogo.id %}" method="post">
                                     {% csrf_token %}
                                     <tr>
-                                        <td>{{ jogo.selecao_1 }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-lg-3">{{ jogo.selecao_1.sigla }}</div>
+                                                <div class="col-lg-7">
+                                                    <img class="img-thumbnail" src="../../../../media/{{ jogo.selecao_1.bandeira }}"width="40px">
+                                                </div>
+                                            </div>
+
+
+                                        </td>
                                         <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
                                         <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar2" class="form-control" required></td>
                                         <td>{{ jogo.selecao_2 }}</td>
