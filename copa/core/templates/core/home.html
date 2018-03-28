@@ -51,7 +51,16 @@
                                         </td>
                                         <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
                                         <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar2" class="form-control" required></td>
-                                        <td>{{ jogo.selecao_2 }}</td>
+                                        <td>
+                                            <div class="row">
+                                                <div class="col-lg-3">{{ jogo.selecao_2.sigla }}</div>
+                                                <div class="col-lg-7">
+                                                    <img class="img-thumbnail" src="../../../../media/{{ jogo.selecao_2.bandeira }}"width="40px">
+                                                </div>
+                                            </div>
+
+
+                                        </td>
                                         <td>
                                             <select name="preco" class="custom-select" style="width: 60px" required>
                                                 <option value="5">5</option>
