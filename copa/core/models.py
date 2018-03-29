@@ -16,7 +16,7 @@ class Selecao(models.Model):
     gol_marc = models.IntegerField(default=0, null=True, blank=True,)
     gol_sofr = models.IntegerField(null=True, blank=True,)
     pontos = models.IntegerField(null=True, blank=True,)
-    bandeira = models.ImageField(upload_to='media', null=True, blank=True,)
+    bandeira = models.FileField(upload_to='media', null=True, blank=True,)
     grupo = models.ForeignKey('Grupo', on_delete=models.CASCADE, related_name='grupos')
 
     class Meta:
