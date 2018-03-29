@@ -4,7 +4,7 @@
 {% block content %}
 
     <div class="col-lg-6">
-        <div class="text-white bg-success" >
+        <div class="alert alert-success"  >
 
             {% if messages %}
 
@@ -48,36 +48,29 @@
                                     <th scope="col">Aposta</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody class="text-center">
 
                                 <form action="{% url 'core:aposta' jogo.id %}" method="post">
                                     {% csrf_token %}
                                     <tr>
+
                                         <td>
-                                            <div class="row">
-                                                <div class="col-lg-3">{{ jogo.selecao_1.sigla }}</div>
-                                                <div class="col-lg-7">
-                                                    {% if  jogo.selecao_1.bandeira %}
-                                                        <img class="img-thumbnail" src="{{ jogo.selecao_1.bandeira.url }} "width="40px">
-                                                    {% endif %}
-                                                </div>
-                                            </div>
+
+                                            <small>{{ jogo.selecao_1.sigla }}</small>
+                                            {% if  jogo.selecao_1.bandeira %}
+                                                <img class="img" src="{{ jogo.selecao_1.bandeira.url }} "width="35px">
+                                            {% endif %}
 
 
                                         </td>
-                                        <td style="width:90px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
-                                        <td style="width: 90px;"><input type="number" maxlength="1" min="0" name="placar2" class="form-control" required></td>
+                                        <td style="width:80px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
+                                        <td style="width: 80px;"><input type="number" maxlength="1" min="0" name="placar2" class="form-control" required></td>
                                         <td>
-                                            <div class="row">
-                                                <div class="col-lg-3">{{ jogo.selecao_2.sigla }}</div>
-                                                <div class="col-lg-7">
-                                                    {% if jogo.selecao_2.bandeira %}
-                                                        <img class="img-thumbnail" src="{{ jogo.selecao_2.bandeira.url }}" width="40px">
 
-                                                    {% endif %}
-                                                </div>
-                                            </div>
-
+                                            {% if jogo.selecao_2.bandeira %}
+                                                <img class="img" src="{{ jogo.selecao_2.bandeira.url }}" width="35px">
+                                            {% endif %}
+                                                <small>{{ jogo.selecao_2.sigla }}</small>
 
                                         </td>
                                         <td>

@@ -11,8 +11,10 @@
         {{ selecoes }}
 
         {% if selecoes.jogo.selecao_2.bandeira %}
-            <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}"><br>
+            <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}">
         {% endif %}
+        <br>
+
         <small>{{ selecoes.placar_1 }}x{{ selecoes.placar_2 }}</small>
 
     {% endfor %}
