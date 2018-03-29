@@ -28,7 +28,7 @@ class Selecao(models.Model):
         return self.nome
 
     def get_absolute_url(self):
-        return self.bandeira
+        return self.bandeira.url
 
 
 class Jogo(models.Model):
