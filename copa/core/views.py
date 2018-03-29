@@ -9,9 +9,9 @@ from copa.core.models import Jogo, Grupo, Selecao, Aposta
 def home(request):
     # hoje = date.today().day
     # jogo = Jogo.objects.filter(horario__day=15).order_by('horario')
-    jogo = Jogo.objects.all().order_by('horario')
+    jogos = Jogo.objects.all().order_by('horario')
     contexto = {
-        'jogos': jogo
+        'jogos': jogos
     }
     return render(request, 'core/home.html', contexto)
 

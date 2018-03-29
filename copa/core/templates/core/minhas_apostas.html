@@ -4,7 +4,12 @@
 {% block content %}
 
     {% for selecoes in apostas %}
-        <p>{{ selecoes }}<br>
+        <p>
+            <img src="{{ selecoes.jogo.selecao_1.bandeira.url }}">
+
+            {{ selecoes }}
+
+            <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}"><br>
         <small>{{ selecoes.placar_2 }}x{{ selecoes.placar_2 }}</small>
         </p><br>
         <p></p><br>
