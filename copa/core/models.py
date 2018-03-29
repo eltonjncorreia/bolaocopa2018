@@ -27,8 +27,7 @@ class Selecao(models.Model):
     def __str__(self):
         return self.nome
 
-    def get_absolute_url(self):
-        return self.bandeira.url
+
 
 
 class Jogo(models.Model):
