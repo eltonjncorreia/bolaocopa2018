@@ -40,23 +40,20 @@ def aposta(request, jogo_id):
         placa2 = request.POST.get('placar2')
         preco = request.POST.get('preco')
 
-        Aposta.objects.create(user_da_aposta=user,
-                              jogo=jogo,
-                              placar_1=placa1,
-                              placar_2=placa2,
-                              preco=preco)
+        aposta = Aposta.objects.create(user_da_aposta=user,
+                                       jogo=jogo,
+                                       placar_1=placa1,
+                                       placar_2=placa2,
+                                       preco=preco)
 
-        messages.success(request, 'Aposta realizada')
+        messages.success(request, 'Aposta realizada => {}'.format(aposta.jogo))
         return HttpResponseRedirect(r('core:home'))
     else:
         return HttpResponseRedirect(r('core:erro_aposta'))
 
 
-
-
 def minha_aposta(request):
-
-    aposta = Aposta.objects.all().filter()
+    aposta = Aposta.objects.all().filter(user_da_aposta=request.user.id)
     return render(request, 'core/minhas_apostas.html', {'apostas': aposta})
 
 
