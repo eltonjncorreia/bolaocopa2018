@@ -126,7 +126,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'mysite/static'),
+    os.path.join(BASE_DIR, '{}/static').format('https://bolaocopa2018.herokuapp.com/'),
 ]
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
