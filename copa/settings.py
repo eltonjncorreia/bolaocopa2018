@@ -121,26 +121,32 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-# static files hosted on the Amazon S3
-AWS_STORAGE_BUCKET_NAME = 'bolao-bucket'
-AWS_S3_REGION_NAME = 'us-west-1'   # us-east-2, por exemplo,
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'mysite/static'),
+]
+
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-
-# dizer ao Django-storages o domínio para usar para se referir a arquivos estáticos.
+AWS_STORAGE_BUCKET_NAME = 'bolao-bucket'
 AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
 
 AWS_LOCATION = 'static'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
 STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+DEFAULT_FILE_STORAGE = '{}.storage_backends.MediaStorage'.format('https://bolaocopa2018.herokuapp.com/')  # <-- here is where we reference it
+
+
+# Extra places for collectstatic to find static files.
+
 
 # static files
 STATICFILES_LOCATION = 'static'
@@ -149,4 +155,3 @@ STATICFILES_STORAGE = 'storage_backends.StaticStorage'
 # media files
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'
-
