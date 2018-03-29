@@ -5,12 +5,14 @@
 
     {% for selecoes in apostas %}
         <p>
+        {% if selecoes.jogo.selecao_1.bandeira  %}
+            <img src="{{ selecoes.jogo.selecao_1.bandeira.url }}">
+        {% endif %}
+        {{ selecoes }}
 
-        <img src="{{ selecoes.jogo.selecao_1.bandeira.url }}">
-
-            {{ selecoes }}
-
-        <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}"><br>
+        {% if selecoes.jogo.selecao_2.bandeira %}
+            <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}"><br>
+        {% endif %}
         <small>{{ selecoes.placar_1 }}x{{ selecoes.placar_2 }}</small>
 
     {% endfor %}
