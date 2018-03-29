@@ -1,4 +1,4 @@
-from .copa import settings
+from copa import settings
 from storages.backends.s3boto3 import S3Boto3Storage
 
 
