@@ -55,9 +55,11 @@
                                     <tr>
                                         <td>
                                             <div class="row">
+                                                {{ jogo.selecao_1.bandeira }}
+                                                {{ jogo.selecao_1.bandeira.url }}
                                                 <div class="col-lg-3">{{ jogo.selecao_1.sigla }}</div>
                                                 <div class="col-lg-7">
-                                                    <img class="img-thumbnail" src="{{ jogo.selecao_1.bandeira }}"width="40px">
+                                                    <img class="img-thumbnail" src="{{ jogo.selecao_1.bandeira.url }}"width="40px">
                                                 </div>
                                             </div>
 
