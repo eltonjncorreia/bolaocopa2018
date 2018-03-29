@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'copa.core',
     'copa.usuario',
-    'storages',
 ]
 
 MIDDLEWARE = [
@@ -125,9 +125,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, '{}/static').format('https://bolaocopa2018.herokuapp.com/'),
-# ]
+
 
 AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')

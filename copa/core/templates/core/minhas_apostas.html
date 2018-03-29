@@ -1,4 +1,4 @@
-{% extends 'core/index.html' %}
+{% extends 'core/base.html' %}
 
 
 {% block content %}
@@ -6,10 +6,11 @@
     {% for selecoes in apostas %}
         <p>
 
-            <img src="{{ selecoes.jogo.selecao_1.bandeira.url }}">
+        <img src="{{ selecoes.jogo.selecao_1.bandeira.url }}">
 
             {{ selecoes }}
-            <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}"><br>
+
+        <img src="{{ selecoes.jogo.selecao_2.bandeira.url }}"><br>
         <small>{{ selecoes.placar_1 }}x{{ selecoes.placar_2 }}</small>
 
     {% endfor %}
