@@ -127,6 +127,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+MEDIA_URL = 'media'
+MEDIA_ROOT = '{}/media'.format(BASE_DIR)
 
 # static files hosted on the Amazon S3
 AWS_STORAGE_BUCKET_NAME = 'bolao-bucket'
@@ -148,3 +150,4 @@ STATICFILES_STORAGE = 'storage_backends.StaticStorage'
 # media files
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'
+
