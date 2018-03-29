@@ -10,10 +10,10 @@ def home(request):
     # hoje = date.today().day
     # jogo = Jogo.objects.filter(horario__day=15).order_by('horario')
     jogos = Jogo.objects.all().order_by('horario')
-    contexto = {
+    context = {
         'jogos': jogos
     }
-    return render(request, 'core/home.html', contexto)
+    return render(request, 'core/home.html', context)
 
 
 def grupo(request):
