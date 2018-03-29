@@ -127,8 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = 'media'
-MEDIA_ROOT = '{}/media'.format(BASE_DIR)
 
 # static files hosted on the Amazon S3
 AWS_STORAGE_BUCKET_NAME = 'bolao-bucket'
@@ -139,9 +137,10 @@ AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 # dizer ao Django-storages o domínio para usar para se referir a arquivos estáticos.
 AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
 
-
+AWS_LOCATION = 'static'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
 # static files
 STATICFILES_LOCATION = 'static'
