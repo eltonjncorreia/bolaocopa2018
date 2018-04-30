@@ -124,29 +124,30 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
-AWS_STORAGE_BUCKET_NAME = 'bolao-bucket'
-AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
-
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400',
-}
-
-AWS_LOCATION = 'static'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-
-DEFAULT_FILE_STORAGE = '{}.storage_backends.MediaStorage'.format('https://bolaocopa2018.herokuapp.com/')
-
-
-# static files
-STATICFILES_LOCATION = 'static'
-STATICFILES_STORAGE = 'storage_backends.StaticStorage'
-
-# media files
-MEDIAFILES_LOCATION = 'media'
-DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'
+#
+# AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+# AWS_STORAGE_BUCKET_NAME = 'bolao-bucket'
+# AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
+#
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+#
+# AWS_LOCATION = 'static'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+#
+# DEFAULT_FILE_STORAGE = '{}.storage_backends.MediaStorage'.format('https://bolaocopa2018.herokuapp.com/')
+#
+#
+# # static files
+# STATICFILES_LOCATION = 'static'
+# STATICFILES_STORAGE = 'storage_backends.StaticStorage'
+#
+# # media files
+# MEDIAFILES_LOCATION = 'media'
+# DEFAULT_FILE_STORAGE = 'storage_backends.MediaStorage'

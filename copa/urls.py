@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('bolao/', include('copa.core.urls', namespace='core')),
     path('', include('copa.usuario.urls')),
-] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 
