@@ -58,10 +58,7 @@
 
                                             <small>{{ jogo.selecao_1.sigla }}</small>
                                             {% if  jogo.selecao_1.bandeira %}
-                                                <img class="img" src="{{ MEDIA_URL }}{{ jogo.selecao_1.bandeira.url }} "width="35px">
-                                                <img class="img" src="{{ MEDIA_URL }}{{ jogo.selecao_1.bandeira }} "width="35px">
                                                 <img class="img" src="{{ jogo.selecao_1.bandeira.url }} "width="35px">
-                                                <img class="img" src="{{ jogo.selecao_1.bandeira }} "width="35px">
 
                                             {% endif %}
 
@@ -72,7 +69,7 @@
                                         <td>
 
                                             {% if jogo.selecao_2.bandeira %}
-                                                <img class="img" src="{{ MEDIA_URL }}{{ jogo.selecao_2.bandeira.url }}" width="35px">
+                                                <img class="img" src="{{ jogo.selecao_2.bandeira.url }}" width="35px">
                                             {% endif %}
                                                 <small>{{ jogo.selecao_2.sigla }}</small>
 
