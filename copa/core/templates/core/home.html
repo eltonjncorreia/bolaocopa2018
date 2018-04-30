@@ -61,7 +61,9 @@
                                                 <img class="img" src="{{ MEDIA_URL }}{{ jogo.selecao_1.bandeira.url }} "width="35px">
 
                                             {% endif %}
-
+{{ MEDIA_URL }}{{ jogo.selecao_1.bandeira.url }}
+{{ MEDIA_URL }}{{ jogo.selecao_1.bandeira }}
+{{ jogo.selecao_1.bandeira }}
 
                                         </td>
                                         <td style="width:80px;"><input type="number" maxlength="1" min="0" name="placar1" class="form-control" required></td>
